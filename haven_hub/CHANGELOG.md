@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0 — Haven
+
+- **Nieuwe naam: Haven** — de veilige thuishaven voor jullie Home Assistants.
+  Voorheen "HA Fleet Hub". Nieuwe slug (`haven_hub`), dus dit is een nieuwe
+  installatie; data uit een bestaande HA Fleet-installatie kan 1-op-1 worden
+  overgezet (zelfde bestandsformaten).
+- UI-wordmark, taal en icoon in de nieuwe huisstijl; agents heten "aangemeerd"
+  als de tunnel staat, en bij nul zorgen meldt de statusbalk rustig water.
+
 ## 1.2.1
 
 - Backups-tab toont een slotje bij versleutelde backups. Agent-instanties met

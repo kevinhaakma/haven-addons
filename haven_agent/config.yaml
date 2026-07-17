@@ -1,0 +1,21 @@
+name: Haven Agent
+version: "2.0.0"
+slug: haven_agent
+description: Meert deze Home Assistant veilig aan bij een Haven-hub voor beheer op afstand (uitgaande verbinding, geen open poorten)
+url: https://github.com/kevinhaakma/haven-addons
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+hassio_api: true
+hassio_role: manager
+homeassistant_api: true
+options:
+  hub_url: ""
+  agent_id: ""
+  agent_key: ""
+schema:
+  hub_url: url
+  agent_id: str
+  agent_key: password

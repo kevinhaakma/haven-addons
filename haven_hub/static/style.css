@@ -84,6 +84,7 @@ header { display: flex; align-items: center; justify-content: space-between; gap
 .stat span { font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--dim); }
 .stat.warn b { color: var(--amber); }
 .stat.bad b { color: var(--red); }
+.stat.calm { font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--accent); opacity: .85; }
 button.stat { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; touch-action: manipulation; }
 button.stat span { text-decoration: underline dotted rgba(255, 255, 255, .3); text-underline-offset: 3px; }
 button.stat:hover span { color: var(--muted); }

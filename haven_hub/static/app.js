@@ -117,8 +117,8 @@ function card(h) {
 
   const tunnelRow = h.kind === "agent"
     ? `<div class="row"><span class="k">Tunnel</span><span class="v">${h.agent_connected
-        ? `<strong style="color:var(--green)">verbonden</strong>${h.agent_since ? ` · sinds ${esc(relAge(h.agent_since))}` : ""}`
-        : `<strong style="color:var(--red)">niet verbonden</strong>`}</span></div>`
+        ? `<strong style="color:var(--green)">aangemeerd</strong>${h.agent_since ? ` · sinds ${esc(relAge(h.agent_since))}` : ""}`
+        : `<strong style="color:var(--red)">losgeslagen</strong>`}</span></div>`
     : "";
 
   if (!h.online) {
@@ -233,12 +233,14 @@ setInterval(renderSync, 30000);
 function renderOverview(o) {
   const stats = $("#stats");
   if (!stats) return;
+  const calm = o.total > 0 && o.online === o.total && !o.updates && !o.alerts;
   stats.innerHTML = `
     <span class="stat"><b data-count="${o.online}">0</b><span>van ${esc(o.total)} online</span></span>
     <span class="stat ${o.updates ? "warn" : ""}"><b data-count="${o.updates}">0</b><span>updates</span></span>
     ${o.alerts
       ? `<button class="stat bad" id="stat-alerts" title="Bekijk alerts"><b data-count="${o.alerts}">0</b><span>alerts</span></button>`
-      : `<span class="stat"><b data-count="0">0</b><span>alerts</span></span>`}`;
+      : `<span class="stat"><b data-count="0">0</b><span>alerts</span></span>`}
+    ${calm ? `<span class="stat calm">rustig water in de haven</span>` : ""}`;
   stats.querySelectorAll("b[data-count]").forEach(b => countUp(b, parseInt(b.dataset.count, 10), 700));
   $("#stat-alerts")?.addEventListener("click", openAlerts);
 }

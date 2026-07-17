@@ -1,4 +1,4 @@
-# HA Fleet Hub
+# Haven Hub
 
 Centraal beheerpaneel voor de Home Assistant-instanties van jezelf, familie en
 vrienden — status, health, backups, updates en meer, allemaal op één plek.
@@ -7,7 +7,7 @@ vrienden — status, health, backups, updates en meer, allemaal op één plek.
 
 De hub houdt een lijst instanties bij: eigen instanties gekoppeld via een
 directe URL + long-lived token (LAN, Tailscale, Nabu Casa), en instanties bij
-familie/vrienden die verbinden via de **HA Fleet Agent** add-on (uitgaande
+familie/vrienden die verbinden via de **Haven Agent** add-on (uitgaande
 tunnel, geen open poorten nodig aan hun kant).
 
 Via de web-UI (ingress) zie je in één overzicht:
@@ -53,10 +53,10 @@ instantie.
 
 1. Hub-UI -> **Instantie** -> *Agent-koppeling* -> naam invullen ->
    **Koppelcode maken**.
-2. Laat hen de **HA Fleet Agent** add-on installeren (zie de add-on-repository
+2. Laat hen de **Haven Agent** add-on installeren (zie de add-on-repository
    in `repo/`) en de gegenereerde `hub_url` / `agent_id` / `agent_key` invullen.
-3. Zodra hun add-on start, verschijnt de instantie in de hub als "tunnel
-   verbonden" — geen verdere actie nodig.
+3. Zodra hun add-on start, verschijnt de instantie in de hub als
+   "aangemeerd" — geen verdere actie nodig.
 4. Sleutel kwijt of gelekt? **Instantie -> Sleutel roteren** maakt de oude
    sleutel ongeldig en levert direct de nieuwe add-on-configuratie op.
 

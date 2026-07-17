@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0 — Haven
+
+- **Nieuwe naam: Haven Agent** — voorheen "HA Fleet Agent". Nieuwe slug
+  (`haven_agent`), dus dit is een nieuwe installatie; de add-on-opties
+  (hub_url / agent_id / agent_key) zijn dezelfde drie als voorheen.
+- Log en notificaties in de nieuwe huisstijl ("aangemeerd" zodra de tunnel
+  naar de haven staat).
+
 ## 1.3.0
 
 - **End-to-end versleutelde backups**: backups die via de hub worden

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""HA Fleet Hub — microservice + web-UI om meerdere Home Assistant instanties te beheren.
+"""Haven Hub — de veilige thuishaven voor meerdere Home Assistant-instanties.
 
 Twee soorten instanties:
   - direct:  {"url": "...", "verify_ssl": false?}  + token in tokens/<naam>
@@ -36,7 +36,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
-VERSION = "1.2.1"
+VERSION = "2.0.0"
 
 # Add-on-opties (/data/options.json); env-vars winnen voor lokaal ontwikkelen
 _OPTS = {}
@@ -46,8 +46,9 @@ if Path("/data/options.json").is_file():
     except (OSError, json.JSONDecodeError):
         _OPTS = {}
 
-if os.environ.get("HAFLEET_DATA"):
-    DATA_DIR = Path(os.environ["HAFLEET_DATA"]).expanduser()
+if os.environ.get("HAVEN_DATA") or os.environ.get("HAFLEET_DATA"):
+    DATA_DIR = Path(os.environ.get("HAVEN_DATA")
+                    or os.environ["HAFLEET_DATA"]).expanduser()
 elif Path("/data").is_dir() and Path("/config").is_dir():
     DATA_DIR = Path("/config")       # add-on met addon_config-mapping (= /addon_configs/<slug>)
 elif Path("/data").is_dir():
@@ -556,7 +557,7 @@ def refresh_instance(name):
     return health
 
 
-def send_notification(settings, message, title="HA Fleet"):
+def send_notification(settings, message, title="Haven"):
     """Stuurt notify via de alert_instance-instantie. Fouten worden stil genegeerd."""
     try:
         cfg = load_config()
@@ -766,7 +767,7 @@ def start_job(label, fn):
 def do_action(name, inst, action, body):
     if action == "backup":
         def run():
-            label = f"fleet-hub {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+            label = f"haven {datetime.now().strftime('%Y-%m-%d %H:%M')}"
             try:
                 res = sup_req(inst, name, "/backups/new/full", "post", {"name": label}, timeout=3600)
                 if res is None:
@@ -853,7 +854,7 @@ def key_hash(key):
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = f"hafleet-hub/{VERSION}"
+    server_version = f"haven-hub/{VERSION}"
     protocol_version = "HTTP/1.1"
 
     def log_message(self, fmt, *args):
@@ -1205,7 +1206,7 @@ def main():
     threading.Thread(target=poller, daemon=True).start()
     srv = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     srv.daemon_threads = True
-    print(f"hafleet-hub luistert op :{PORT} — data in {DATA_DIR}", flush=True)
+    print(f"haven-hub luistert op :{PORT} — data in {DATA_DIR}", flush=True)
     srv.serve_forever()
 
 

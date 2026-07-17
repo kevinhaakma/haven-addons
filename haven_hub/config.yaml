@@ -1,8 +1,8 @@
-name: HA Fleet Hub
-version: "1.2.1"
-slug: hafleet_hub
-description: Beheer de Home Assistant-instanties van familie en vrienden vanaf één dashboard
-url: https://github.com/kevinhaakma/ha-fleet-addons
+name: Haven Hub
+version: "2.0.0"
+slug: haven_hub
+description: De veilige thuishaven voor de Home Assistants van familie en vrienden
+url: https://github.com/kevinhaakma/haven-addons
 arch:
   - amd64
   - aarch64
@@ -12,8 +12,8 @@ map:
   - addon_config:rw
 ingress: true
 ingress_port: 8099
-panel_icon: mdi:home-group
-panel_title: HA Fleet
+panel_icon: mdi:anchor
+panel_title: Haven
 watchdog: http://[HOST]:8099/healthz
 options:
   public_hub_url: ""

@@ -1,6 +1,6 @@
-# HA Fleet Agent
+# Haven Agent
 
-Koppelt deze Home Assistant-instantie aan een HA Fleet Hub, zodat die op afstand
+Koppelt deze Home Assistant-instantie aan een Haven Hub, zodat die op afstand
 kan beheren — zonder dat er hier een poort open hoeft te staan.
 
 ## Wat doet deze add-on
@@ -35,11 +35,12 @@ aangeleverd — gewoon overtypen of plakken.
 ## Koppelen
 
 1. Vraag de hubbeheerder om een koppelcode voor jouw instantie.
-2. Installeer deze add-on (via de HA Fleet add-on-repository, of door de map
-   handmatig naar `/addons/hafleet_agent` te kopiëren).
+2. Installeer deze add-on (via de Haven add-on-repository, of door de map
+   handmatig naar `/addons/haven_agent` te kopiëren).
 3. Vul `hub_url`, `agent_id` en `agent_key` in bij **Configuratie** en sla op.
-4. Start de add-on. In het logvenster verschijnt `verbonden met de hub` zodra
-   de tunnel staat — de hubbeheerder ziet de instantie dan als "verbonden".
+4. Start de add-on. In het logvenster verschijnt `aangemeerd — tunnel naar de
+   haven staat` zodra de tunnel er is — de hubbeheerder ziet de instantie dan
+   als "aangemeerd".
 5. Sleutel kwijt, gelekt, of wil je opnieuw koppelen? De hubbeheerder kan de
    sleutel roteren; vul de nieuwe `agent_key` hier in en herstart de add-on.
 

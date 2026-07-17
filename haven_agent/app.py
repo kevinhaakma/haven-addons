@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""HA Fleet Agent — draait als add-on op de HA van een familielid/vriend.
+"""Haven Agent — draait als add-on op de HA van een familielid/vriend.
 
-Belt ZELF uit (reverse tunnel over WebSocket, meestal wss:// via Cloudflare)
-naar de HA Fleet Hub van de beheerder. Geen VPN of port-forward nodig; er
+Meert deze Home Assistant aan bij de Haven van de beheerder: belt ZELF uit
+(reverse tunnel over WebSocket, meestal wss:// via Cloudflare). Geen VPN of
+port-forward nodig; er
 verlaat geen token dit systeem — de agent gebruikt het lokale
 SUPERVISOR_TOKEN om Core- en Supervisor-API's aan te roepen.
 
@@ -27,7 +28,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
 
-VERSION = "1.3.0"
+VERSION = "2.0.0"
 
 OPTIONS = {}
 if os.path.exists("/data/options.json"):
@@ -160,14 +161,14 @@ def _notify_owner(key):
         req.add_header("Authorization", f"Bearer {TOKEN}")
         req.add_header("Content-Type", "application/json")
         body = {
-            "title": "HA Fleet Agent: backup-wachtwoord",
+            "title": "Haven: jouw backup-wachtwoord",
             "message": (
-                "Backups via HA Fleet worden end-to-end versleuteld met dit "
+                "Backups via Haven worden end-to-end versleuteld met dit "
                 f"wachtwoord:\n\n**`{key}`**\n\nBewaar het op een veilige plek "
                 "búiten deze machine (wachtwoordmanager). Zonder dit wachtwoord "
                 "is een backup niet te herstellen als deze machine wegvalt. "
                 "Het wachtwoord staat ook in `/data/backup_key` van de add-on."),
-            "notification_id": "hafleet_backup_key",
+            "notification_id": "haven_backup_key",
         }
         urllib.request.urlopen(req, data=json.dumps(body).encode(), timeout=10).close()
     except Exception as e:
@@ -313,9 +314,9 @@ def main():
     backoff = 5
     while True:
         try:
-            print(f"verbinden met {HUB_URL} als '{AGENT_ID}'…", flush=True)
+            print(f"aanmeren bij {HUB_URL} als '{AGENT_ID}'…", flush=True)
             io = connect()
-            print("verbonden met de hub", flush=True)
+            print("aangemeerd — tunnel naar de haven staat", flush=True)
             backoff = 5
             io.send_json({"type": "hello", "meta": {
                 "agent_id": AGENT_ID,
