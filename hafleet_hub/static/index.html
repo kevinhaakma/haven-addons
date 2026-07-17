@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HA Fleet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 24 24" class="ico accent"><path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <div>
+      <h1>HA Fleet</h1>
+      <p class="sub">Home Assistant instanties van familie &amp; vrienden</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn" id="btn-audit" title="Logboek bekijken">
+      <svg viewBox="0 0 24 24" class="ico"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Logboek
+    </button>
+    <button class="btn" id="btn-settings" title="Instellingen">
+      <svg viewBox="0 0 24 24" class="ico"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z M19.4 13a7.4 7.4 0 0 0 .1-1 7.4 7.4 0 0 0-.1-1l2-1.6-2-3.4-2.3 1a7.6 7.6 0 0 0-1.7-1L15 3h-4l-.4 2.6a7.6 7.6 0 0 0-1.7 1l-2.3-1-2 3.4L6.5 11a7.4 7.4 0 0 0-.1 1 7.4 7.4 0 0 0 .1 1l-2 1.6 2 3.4 2.3-1a7.6 7.6 0 0 0 1.7 1L10 21h4l.4-2.6a7.6 7.6 0 0 0 1.7-1l2.3 1 2-3.4Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Instellingen
+    </button>
+    <button class="btn" id="btn-refresh-all" title="Alles opnieuw ophalen">
+      <svg viewBox="0 0 24 24" class="ico"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Vernieuwen
+    </button>
+    <button class="btn primary" id="btn-add">
+      <svg viewBox="0 0 24 24" class="ico"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Instantie
+    </button>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div id="stats" class="stats"></div>
+  <span class="sync" id="sync"></span>
+</div>
+
+<main>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" hidden>
+    <svg viewBox="0 0 24 24" class="ico-big"><path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <p>Nog geen instanties gekoppeld.</p>
+    <button class="btn primary" id="btn-add-empty">
+      <svg viewBox="0 0 24 24" class="ico"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Instantie toevoegen
+    </button>
+  </div>
+</main>
+
+<div id="modal-root"></div>
+<div id="toasts" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

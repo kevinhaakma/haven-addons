@@ -1,0 +1,16 @@
+configuration:
+  hub_url:
+    name: Hub-URL
+    description: >-
+      WebSocket-adres van de HA Fleet Hub, bijv. wss://fleet.example.com/agent/ws.
+      Je krijgt dit van de hubbeheerder via de koppelcode.
+  agent_id:
+    name: Agent-naam
+    description: >-
+      Unieke naam van deze instantie op de hub (bijv. "broer"). Komt uit de
+      koppelcode van de hubbeheerder.
+  agent_key:
+    name: Agent-sleutel
+    description: >-
+      Geheime sleutel die bij de agent-naam hoort. Komt uit de koppelcode; bij
+      een sleutel-rotatie op de hub vul je hier de nieuwe sleutel in.

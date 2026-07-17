@@ -1,0 +1,12 @@
+configuration:
+  public_hub_url:
+    name: Publieke hub-URL
+    description: >-
+      Het publieke WebSocket-adres waarop agents deze hub bereiken, bijv.
+      wss://fleet.example.com/agent/ws. Wordt gebruikt in de koppelcodes die de
+      UI genereert. Leeg laten kan alleen als je geen agent-instanties gebruikt.
+  poll_interval:
+    name: Poll-interval (seconden)
+    description: >-
+      Hoe vaak de hub alle instanties controleert op status, updates, backups en
+      alerts. Standaard 300 seconden (5 minuten).

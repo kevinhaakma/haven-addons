@@ -1,0 +1,21 @@
+name: HA Fleet Agent
+version: "1.3.0"
+slug: hafleet_agent
+description: Koppelt deze Home Assistant aan een HA Fleet Hub voor beheer op afstand (uitgaande verbinding, geen open poorten)
+url: https://github.com/kevinhaakma/ha-fleet-addons
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+hassio_api: true
+hassio_role: manager
+homeassistant_api: true
+options:
+  hub_url: ""
+  agent_id: ""
+  agent_key: ""
+schema:
+  hub_url: url
+  agent_id: str
+  agent_key: password
